@@ -57,7 +57,7 @@ const fakeRequest = (url) => {
         },
         "/posts/4565": {
           id: 4565,
-          title: "Hey I am a Software Engineer",
+          title: "Hey I am Usama And I am Software Engineer",
         },
         "/about": "This is About page",
       };
@@ -72,16 +72,32 @@ const fakeRequest = (url) => {
 };
 /* Channing Promises using Then */
 
-fakeRequest("/users").then((res) => {
-  const uderId = res.data[0].id;
-  fakeRequest(`/users/${uderId}`).then((res) => {
+fakeRequest("/users")
+  .then((res) => {
+    const uderId = res.data[0].id;
+    return fakeRequest(`/users/${uderId}`);
+  })
+  .then((res) => {
     const postID = res.data.topPostId;
-    console.log(res.data.username);
-    fakeRequest(`/posts/${postID}`).then((res) => {
-      console.log(res.data.title);
-    });
+    return fakeRequest(`/posts/${postID}`);
+  })
+  .then((res) => {
+    console.log(res.data.title);
+  })
+  .catch((err) => {
+    console.log(err.status);
   });
-});
+
+// fakeRequest("/users").then((res) => {
+//   const uderId = res.data[0].id;
+//   fakeRequest(`/users/${uderId}`).then((res) => {
+//     const postID = res.data.topPostId;
+//     console.log(res.data.username);
+//     fakeRequest(`/posts/${postID}`).then((res) => {
+//       console.log(res.data.title);
+//     });
+//   });
+// });
 
 // fakeRequest("/about")
 //   .then((res) => {
