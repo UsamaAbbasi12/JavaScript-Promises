@@ -1,38 +1,38 @@
-// const willfly = new Promise((resolve, reject) => {
-//   const random = Math.random();
-//   if (random < 0.5) {
-//     resolve("Success");
-//   } else {
-//     reject("Failure");
-//   }
-// })
-//   .then(() => {
-//     console.log("Promise is R e s o l v e d");
-//   })
-//   .catch(() => {
-//     console.log("Promise is R e j e c t e d");
-//   });
+const willfly = new Promise((resolve, reject) => {
+  const random = Math.random();
+  if (random < 0.5) {
+    resolve("Success");
+  } else {
+    reject("Failure");
+  }
+})
+  .then(() => {
+    console.log("Promise is R e s o l v e d");
+  })
+  .catch(() => {
+    console.log("Promise is R e j e c t e d");
+  });
 
-// const willFly = () => {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       const random = Math.random();
-//       if (random < 0.5) {
-//         resolve("Success");
-//       } else {
-//         reject("Failure");
-//       }
-//     }, 2000);
-//   });
-// };
+const willFly = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const random = Math.random();
+      if (random < 0.5) {
+        resolve("Success");
+      } else {
+        reject("Failure");
+      }
+    }, 2000);
+  });
+};
 
-// willFly()
-//   .then(() => {
-//     alert("Promise is R e s o l v e d");
-//   })
-//   .catch(() => {
-//     alert("Promise is R e j e c t e d");
-//   });
+willFly()
+  .then(() => {
+    alert("Promise is R e s o l v e d");
+  })
+  .catch(() => {
+    alert("Promise is R e j e c t e d");
+  });
 
 const fakeRequest = (url) => {
   return new Promise((resolve, reject) => {
@@ -88,32 +88,32 @@ fakeRequest("/users")
     console.log(err.status);
   });
 
-// fakeRequest("/users").then((res) => {
-//   const uderId = res.data[0].id;
-//   fakeRequest(`/users/${uderId}`).then((res) => {
-//     const postID = res.data.topPostId;
-//     console.log(res.data.username);
-//     fakeRequest(`/posts/${postID}`).then((res) => {
-//       console.log(res.data.title);
-//     });
-//   });
-// });
+fakeRequest("/users").then((res) => {
+  const uderId = res.data[0].id;
+  fakeRequest(`/users/${uderId}`).then((res) => {
+    const postID = res.data.topPostId;
+    console.log(res.data.username);
+    fakeRequest(`/posts/${postID}`).then((res) => {
+      console.log(res.data.title);
+    });
+  });
+});
 
-// fakeRequest("/about")
-//   .then((res) => {
-//     console.log("Status code", res.status);
-//     console.log("Data", res.data);
-//   })
-//   .catch((rej) => {
-//     console.log("Promise Rejected");
-//     console.log("Status code", rej.status);
-//   });
-// fakeRequest("/products")
-//   .then((res) => {
-//     console.log("Status code", res.status);
-//     console.log("Data", res.data);
-//   })
-//   .catch((rej) => {
-//     console.log("Promise Rejected");
-//     console.log("Status code", rej.status);
-//   });
+fakeRequest("/about")
+  .then((res) => {
+    console.log("Status code", res.status);
+    console.log("Data", res.data);
+  })
+  .catch((rej) => {
+    console.log("Promise Rejected");
+    console.log("Status code", rej.status);
+  });
+fakeRequest("/products")
+  .then((res) => {
+    console.log("Status code", res.status);
+    console.log("Data", res.data);
+  })
+  .catch((rej) => {
+    console.log("Promise Rejected");
+    console.log("Status code", rej.status);
+  });
